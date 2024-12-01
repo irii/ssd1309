@@ -16,25 +16,14 @@ edition = "2021"
 targets = [ "thumbv7m-none-eabi", "thumbv7em-none-eabihf" ]
 
 [dependencies]
-embedded-hal = "^ 0.2"
-display-interface = "^ 0.4"
+display-interface = "0.5.0"
 embedded-graphics-core = { version = "^ 0.4", optional = true }
-
-[dev-dependencies]
-cortex-m = "^ 0.7"
-cortex-m-rt = "^ 0.7"
-embedded-graphics = "^ 0.8"
-panic-semihosting = "^ 0.6"
-display-interface-i2c = "^ 0.4"
-display-interface-spi = "^ 0.4"
-
-[dev-dependencies.stm32f1xx-hal]
-version = "^ 0.10"
-features = [ "rt", "stm32f103" ]
+embedded-hal = "1.0.0"
 
 [features]
 default = ["graphics"]
 graphics = ["embedded-graphics-core"]
+embedded-graphics-core = ["dep:embedded-graphics-core"]
 
 [profile.dev]
 codegen-units = 1

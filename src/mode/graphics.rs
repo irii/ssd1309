@@ -16,7 +16,7 @@
 //! ```
 
 use display_interface::{DisplayError, WriteOnlyDataCommand};
-use hal::{blocking::delay::DelayMs, digital::v2::OutputPin};
+use hal::{delay::DelayNs, digital::OutputPin};
 
 use crate::{
     displayrotation::DisplayRotation,
@@ -72,7 +72,7 @@ where
     ) -> Result<(), PinE>
     where
         RST: OutputPin<Error = PinE>,
-        DELAY: DelayMs<u8>,
+        DELAY: DelayNs,
     {
         rst.set_high()?;
         delay.delay_ms(10);
